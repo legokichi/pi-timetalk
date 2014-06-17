@@ -2,14 +2,14 @@ AQUESTALKPI = "/home/pi/aquestalkpi/AquesTalkPi"
 exec = require('child_process').exec
 
 main = ->
-  setInterval (->
+  shuugyou()
+  a=->setInterval (->
     date = new Date()
     if date.getMinutes() is 0
-      if date.getHours() is 5
+      if date.getHours() is 19
         shuugyou()
       else
-        shuugyou()
-        talk "げんざいのじこくは、#{date.getHours()}じ、#{date.getMinutes()}ふん、です。"
+        talk "ぽ。ぽ。ぽ。ぽーん。#{date.getHours()}じになりました。"
   ), 60*1000
 
 wait = (a, b)-> setTimeout(b, a)
@@ -17,13 +17,14 @@ wait = (a, b)-> setTimeout(b, a)
 shuugyou = ->
   hotaru()
   wait 5000, ->
-    talk "しゅうぎょうじこくになりました。　かえりましょう。", ->
-      wait 5000, ->
-        talk "くにに、かえるんだな。おまえにも、かぞくがいるのだろう？", ->
-          wait 5000, ->
-            talk "しゅうぎょうじこくになりました。　かえりましょう。", ->
-              wait 5000, ->
-                talk "くにに、かえるんだな。おまえにも、かぞくがいるのだろう？", ->
+    talk "みなさん、ほんじつのさぎょうのしゅうりょうじかんです。", ->
+      talk "きょうもいちにち、ごくろうさまでした。", ->
+        talk "みのまわりのせいりせいとんをかくにんしておかえりください。", ->
+          talk "あすもまた、きもちよく、けんきゅうにかかれるように、じゅんびをしてかえりましょう。", ->
+            talk "きたくのとちゅうは、じゅうぶんきをつけてください。", ->
+              talk "ふかざけ、よふかしなどはしないで、けんこういじにつとめましょう。", ->
+                talk "なお、ざんぎょうをおこなうひとはけいびいんにもうしでてください。", ->
+                  talk "ほんじつはごくろうさまでした。", ->
 
 talk = do ->
   talking = false
@@ -39,7 +40,7 @@ talk = do ->
         console.log err.signal
 
 hotaru = ->
-  exec "omxplayer hotarunohikari.mp3 --vol -5000", (err, stdout, stderr)->
+  exec "omxplayer hotarunohikari.mp3 --vol -2000", (err, stdout, stderr)->
     if !err then cb()
     else
       console.log err
