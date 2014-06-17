@@ -27,7 +27,7 @@ talk = do ->
         console.log err.signal
 
 hotaru = ->
-  exec "omxplayer hotarunohikari.mp3", (err, stdout stderr)->
+  exec "omxplayer hotarunohikari.mp3", (err, stdout, stderr)->
     if !err then cb()
     else
       console.log err
