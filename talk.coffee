@@ -31,14 +31,14 @@ shuugyou = ->
                           wait 2000, ->
                             talk "なお、ざんぎょうを、おこなうひとは、けいびいんに、もうしでてください。", ->
                               wait 2000, ->
-                                talk "ほんじつは、ごくろうさまでした。", ->
+                                talk "ほんじつは、けんきゅうかつどう、ごくろうさまでした。", ->
 
 talk = do ->
   talking = false
   (text, cb=->)->
     if talking then return cb(false)
     talking = true
-    exec "#{AQUESTALKPI} \"#{text}\" | aplay", (err, stdout, stderr)->
+    exec "#{AQUESTALKPI} \"#{text}\" -s 70 | aplay", (err, stdout, stderr)->
       talking = false
       if !err then cb()
       else
