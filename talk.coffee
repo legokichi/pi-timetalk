@@ -4,8 +4,8 @@ exec = require('child_process').exec
 main = ->
   setInterval (->
     date = new Date()
-    if date.getHours() is 5
-       date.getMinutes() is 0
+    if true or (date.getHours() is 5 and
+       date.getMinutes() is 0)
       hotaru()
       talk "しゅうぎょうじこくになりました。　かえりましょう。"
     talk "げんざいのじこくは、#{date.getHours()}じ、#{date.getMinutes()}ふん、です。"
