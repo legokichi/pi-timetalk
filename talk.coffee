@@ -7,11 +7,15 @@ main = ->
     if true or (date.getHours() is 5 and
        date.getMinutes() is 0)
       hotaru()
-      talk "しゅうぎょうじこくになりました。　かえりましょう。"
-    talk "げんざいのじこくは、#{date.getHours()}じ、#{date.getMinutes()}ふん、です。"
+      wait 5000, ->
+        talk "しゅうぎょうじこくになりました。　かえりましょう。", ->
+          wait 5000, ->
+            talk "くにに、かえるんだな。おまえにも、かぞくがいるのだろう？", ->
+    else
+      talk "げんざいのじこくは、#{date.getHours()}じ、#{date.getMinutes()}ふん、です。"
   ), 60*1000
 
-
+wait = (a, b)-> setTimeout(b, a)
 
 talk = do ->
   talking = false
@@ -27,7 +31,7 @@ talk = do ->
         console.log err.signal
 
 hotaru = ->
-  exec "omxplayer hotarunohikari.mp3", (err, stdout, stderr)->
+  exec "omxplayer hotarunohikari.mp3 --vol -1000", (err, stdout, stderr)->
     if !err then cb()
     else
       console.log err
