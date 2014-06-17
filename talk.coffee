@@ -6,20 +6,24 @@ main = ->
     date = new Date()
     if date.getMinutes() is 0
       if date.getHours() is 5
-        hotaru()
-        wait 5000, ->
-          talk "しゅうぎょうじこくになりました。　かえりましょう。", ->
-            wait 5000, ->
-              talk "くにに、かえるんだな。おまえにも、かぞくがいるのだろう？", ->
-                wait 5000, ->
-                  talk "しゅうぎょうじこくになりました。　かえりましょう。", ->
-                    wait 5000, ->
-                      talk "くにに、かえるんだな。おまえにも、かぞくがいるのだろう？", ->
-    else
-      talk "げんざいのじこくは、#{date.getHours()}じ、#{date.getMinutes()}ふん、です。"
+        shuugyou()
+      else
+        shuugyou()
+        talk "げんざいのじこくは、#{date.getHours()}じ、#{date.getMinutes()}ふん、です。"
   ), 60*1000
 
 wait = (a, b)-> setTimeout(b, a)
+
+shuugyou = ->
+  hotaru()
+  wait 5000, ->
+    talk "しゅうぎょうじこくになりました。　かえりましょう。", ->
+      wait 5000, ->
+        talk "くにに、かえるんだな。おまえにも、かぞくがいるのだろう？", ->
+          wait 5000, ->
+            talk "しゅうぎょうじこくになりました。　かえりましょう。", ->
+              wait 5000, ->
+                talk "くにに、かえるんだな。おまえにも、かぞくがいるのだろう？", ->
 
 talk = do ->
   talking = false
