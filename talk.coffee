@@ -2,8 +2,7 @@ AQUESTALKPI = "/home/pi/aquestalkpi/AquesTalkPi"
 exec = require('child_process').exec
 
 main = ->
-  shuugyou()
-  a=->setInterval (->
+  setInterval (->
     date = new Date()
     if date.getMinutes() is 0
       if date.getHours() is 19
