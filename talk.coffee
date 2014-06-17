@@ -4,13 +4,17 @@ exec = require('child_process').exec
 main = ->
   setInterval (->
     date = new Date()
-    if true or (date.getHours() is 5 and
-       date.getMinutes() is 0)
-      hotaru()
-      wait 5000, ->
-        talk "しゅうぎょうじこくになりました。　かえりましょう。", ->
-          wait 5000, ->
-            talk "くにに、かえるんだな。おまえにも、かぞくがいるのだろう？", ->
+    if date.getMinutes() is 0
+      if date.getHours() is 5
+        hotaru()
+        wait 5000, ->
+          talk "しゅうぎょうじこくになりました。　かえりましょう。", ->
+            wait 5000, ->
+              talk "くにに、かえるんだな。おまえにも、かぞくがいるのだろう？", ->
+                wait 5000, ->
+                  talk "しゅうぎょうじこくになりました。　かえりましょう。", ->
+                    wait 5000, ->
+                      talk "くにに、かえるんだな。おまえにも、かぞくがいるのだろう？", ->
     else
       talk "げんざいのじこくは、#{date.getHours()}じ、#{date.getMinutes()}ふん、です。"
   ), 60*1000
@@ -31,7 +35,7 @@ talk = do ->
         console.log err.signal
 
 hotaru = ->
-  exec "omxplayer hotarunohikari.mp3 --vol -1000", (err, stdout, stderr)->
+  exec "omxplayer hotarunohikari.mp3 --vol -5000", (err, stdout, stderr)->
     if !err then cb()
     else
       console.log err
