@@ -7,8 +7,8 @@ main = ->
     if date.getMinutes() is 0
       if date.getHours() is 19
         shuugyou()
-      else
-        talk "ぽ。ぽ。ぽ。ぽーん。#{date.getHours()}じになりました。"
+      #else
+      #  talk "ぽ。ぽ。ぽ。ぽーん。#{date.getHours()}じになりました。"
   ), 60*1000
 
 wait = (a, b)-> setTimeout(b, a)
